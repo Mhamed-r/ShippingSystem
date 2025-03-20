@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shipping.Api.Infrastructure.Data;
-using Shipping.Api.Service;
+using Shipping.Api.Services;
 
 
 

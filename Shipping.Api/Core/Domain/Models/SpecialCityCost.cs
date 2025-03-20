@@ -6,12 +6,10 @@ namespace Shipping.Api.Core.Domain.Models;
 
    public class SpecialCityCost
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public decimal StandardShippingCost { get; set; }
-        public decimal pickupShippingCost { get; set; }
-        public bool IsDeleted { get; set; } = false;
+     public int Id { get; set; }
+     public DateTime CreatedAt { get; set; } = DateTime.Now;
+     public decimal Price { get; set; }
+     public bool IsDeleted { get; set; } = false;
         //----------- Obj From CitySetting and ForeignKey CitySettingId ---------------------------------
         [ForeignKey(nameof(CitySetting))]
         public int CitySettingId { get; set; }

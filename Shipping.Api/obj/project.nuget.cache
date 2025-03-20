@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tredrB1FfnA=",
+  "dgSpecHash": "YyhWKmmz9B0=",
   "success": true,
-  "projectFilePath": "D:\\ITI\\Gen AI\\ShippingSystem\\Shipping.Api\\Shipping.Api.csproj",
+  "projectFilePath": "D:\\ITI\\Graduation Project\\ShippingSystem\\Shipping.Api\\Shipping.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MSi\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\MSi\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
