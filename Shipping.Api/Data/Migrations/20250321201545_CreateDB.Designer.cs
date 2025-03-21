@@ -12,8 +12,8 @@ using Shipping.Api.Infrastructure.Data;
 namespace Shipping.Api.Data.Migrations
 {
     [DbContext(typeof(ShippingContext))]
-    [Migration("20250319180453_Create DataBase")]
-    partial class CreateDataBase
+    [Migration("20250321201545_CreateDB")]
+    partial class CreateDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -584,14 +584,7 @@ namespace Shipping.Api.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("StandardShippingCost")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("pickupShippingCost")
+                    b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");

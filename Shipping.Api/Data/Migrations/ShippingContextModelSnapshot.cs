@@ -581,14 +581,7 @@ namespace Shipping.Api.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("StandardShippingCost")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("pickupShippingCost")
+                    b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");

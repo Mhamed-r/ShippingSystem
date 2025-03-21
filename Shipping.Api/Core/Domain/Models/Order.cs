@@ -45,7 +45,6 @@ namespace Shipping.Api.Core.Domain.Models;
         public int? PaymentTypeId { get; set; }
         public virtual PaymentType? PaymentType { get; set; }
     //----------- ICollection From Product ---------------------------------
-
     public virtual ICollection<Product>? Products { get; set; }
         //----------- Customer Info ---------------------------------
         public string CustomerName { get; set; } = string.Empty;
