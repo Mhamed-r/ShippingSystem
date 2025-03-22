@@ -2,6 +2,8 @@
 
 public class GetAllCourierOrderCountDto
 {
-    public required string CourierName { get; set; }
+   public string CourierName { get; set; }
+
     public int OrdersCount { get; set; } = 0;
-}
+        
+ };

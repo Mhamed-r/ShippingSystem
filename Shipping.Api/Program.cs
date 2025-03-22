@@ -17,31 +17,7 @@ namespace Shipping.Api
 
             #region Configure Services
             // Add services to the container.
-
-            builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddOpenApi();
-            builder.Services.AddDbContext<ShippingContext>(options =>
-            {
-                options.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-            });
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy(txt,
-                builder =>
-                {
-                    builder.AllowAnyOrigin();
-                    builder.AllowAnyMethod();
-                    builder.AllowAnyHeader();
-                });
-            });
-            builder.Services.AddAutoMapper(typeof(MapperConfig));
-            builder.Services.AddScoped(typeof(IGenericRepository<,>),typeof(GenericRepository<,>));
-            builder.Services.AddScoped<CourierReportsService>();
-            builder.Services.AddScoped<RegionService>();
-
-
-
+            builder.Services.AddInfrastructure(builder.Configuration);
             #endregion
             var app = builder.Build();
             #region Configure MiddleWare

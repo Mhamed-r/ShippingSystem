@@ -10,7 +10,7 @@ public class MapperConfig:Profile
     {
         CreateMap<CourierReport,CourierReportDto>().AfterMap((src,dest) =>
         {
-            dest.CourierName = src.Courier.FullName;
+                
             dest.Area = src.Order.CitySetting.Name;
             dest.ClientName = src.Order.MerchantId;
             dest.CustomerName = src.Order.CustomerName;
