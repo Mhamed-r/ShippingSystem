@@ -13,8 +13,6 @@ public class RegionService
     {
         this._genericRepository = genericRepository;
         this._map = _map;
-
-
     }
     public async Task<List<RegionDto>> GetAllRegionsAsync()
     {
@@ -50,8 +48,6 @@ public class RegionService
     {
         Region region = _map.Map<Region>(regionDto);
         await _genericRepository.UpdateAsync(region);
-        
-
     }
     public async Task DeleteRegionAsync(int id)
     {
@@ -62,6 +58,5 @@ public class RegionService
         }
         region.IsDeleted = true;
         await _genericRepository.UpdateAsync(region);
-
     }
 }
