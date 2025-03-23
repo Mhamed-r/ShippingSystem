@@ -16,6 +16,7 @@ public class MapperConfig:Profile
             dest.CustomerName = src.Order.CustomerName;
             dest.CustomerPhone = src.Order.CustomerPhone1;
             dest.CustomerAddress = src.Order.CustomerAddress;
+            dest.CourierName = src.Courier.FullName;
             dest.products = src.Order.Products.Select(x => x.Name).ToList();
             dest.orderStatus = src.Order.Status.ToString();
             dest.Amount = src.Order.OrderCost;

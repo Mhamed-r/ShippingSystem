@@ -5,7 +5,7 @@ using Shipping.Api.Infrastructure.Dtos;
 
 namespace Shipping.Api.Services;
 
-public class RegionService
+public class RegionService:IRegionService
 {
     private readonly IGenericRepository<Region,int> _genericRepository;
     private readonly IMapper _map;

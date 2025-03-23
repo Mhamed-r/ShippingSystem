@@ -6,7 +6,7 @@ using Shipping.Api.Infrastructure.Dtos;
 
 namespace Shipping.Api.Services;
 
-public class CourierReportsService
+public class CourierReportsService:ICourierReportsService
 {
     private readonly IGenericRepository<CourierReport,int> _genericRepository;
     private readonly UserManager<ApplicationUser> _userManager;

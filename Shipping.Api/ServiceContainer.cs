@@ -33,8 +33,8 @@ public static class ServiceContainer
         services.AuthenticationConfigurations();
         services.AddAutoMapper(typeof(MapperConfig));
         services.AddScoped(typeof(IGenericRepository<,>),typeof(GenericRepository<,>));
-        services.AddScoped<CourierReportsService>();
-        services.AddScoped<RegionService>();
+        services.AddScoped<ICourierReportsService,CourierReportsService>();
+        services.AddScoped<IRegionService,RegionService>();
         services.AddScoped<IUserService,UsersService>();
         services.AddScoped<ISpecialCityCostService,SpecialCityCostService>();
         services.AddScoped<ISpecialCourierRegionService,SpecialCourierRegionService>();

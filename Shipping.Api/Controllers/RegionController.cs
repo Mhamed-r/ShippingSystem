@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Shipping.Api.Core.Abstraction;
 using Shipping.Api.Core.Domain.Helpers;
 using Shipping.Api.Core.Domain.Models;
 using Shipping.Api.Infrastructure.Dtos;
@@ -10,93 +11,103 @@ namespace Shipping.Api.Controllers;
 [ApiController]
 public class RegionController:ControllerBase
 {
-    private readonly RegionService _regionService;
-    public RegionController(RegionService _regionService)
+    private readonly IRegionService _regionService;
+    public RegionController(IRegionService _regionService)
     {
         this._regionService = _regionService;
 
     }
     [HttpGet]
-    public async Task<ActionResult<List<RegionDto>>> GetAllRegions()
+    public async Task<IActionResult> GetAllRegions()
     {
         try
         {
             if(await _regionService.GetAllRegionsAsync() == null)
             {
-                return NotFound(new ResponseAPI(404));
+                return NotFound(new ResponseAPI(StatusCodes.Status404NotFound));
+
             }
             return Ok(await _regionService.GetAllRegionsAsync());
         }
         catch
         {
-            return BadRequest(new ResponseAPI(400));
+            return BadRequest(new ResponseAPI(StatusCodes.Status400BadRequest));
+
         }
     }
     [HttpGet("{id}")]
-    public async Task<ActionResult<RegionDto>> GetRegionById(int id)
+    public async Task<IActionResult> GetRegionById(int id)
     {
         try
         {
             if(await _regionService.GetRegionByIdAsync(id) == null)
             {
-                return NotFound(new ResponseAPI(404));
+                return NotFound(new ResponseAPI(StatusCodes.Status404NotFound));
+
             }
             return Ok(await _regionService.GetRegionByIdAsync(id));
         }
         catch
         {
-            return BadRequest(new ResponseAPI(400));
+            return BadRequest(new ResponseAPI(StatusCodes.Status400BadRequest));
+
         }
     }
     [HttpPost]
-    public async Task<ActionResult<RegionDto>> CreateRegion(RegionDto region)
+    public async Task<IActionResult> CreateRegion(RegionDto region)
     {
         try
         {
-        if(region == null)
-        {
-            return NotFound(new ResponseAPI(404));
+            if(region == null)
+            {
+                return NotFound(new ResponseAPI(StatusCodes.Status404NotFound));
+
             }
-            return Ok(await _regionService.CreateRegionAsync(region));
+            await _regionService.CreateRegionAsync(region);
+            return Created();
         }
         catch
         {
-            return BadRequest(new ResponseAPI(400));
+            return BadRequest(new ResponseAPI(StatusCodes.Status400BadRequest));
+
         }
     }
     [HttpPut("{id}")]
-    public async Task<ActionResult<RegionDto>> UpdateRegion(int id,RegionDto region)
+    public async Task<IActionResult> UpdateRegion(int id,RegionDto region)
     {
         try
         { 
         if(id != region.Id)
         {
-            return NotFound(new ResponseAPI(404,"ID Not Match"));
+            return NotFound(new ResponseAPI(StatusCodes.Status404NotFound,"ID Not Match"));
 
         }
         await _regionService.UpdateRegionAsync(region);
-            return Ok();
+            return Ok(new ResponseAPI(StatusCodes.Status202Accepted));
         }
         catch
         {
-            return BadRequest(new ResponseAPI(400));
+            return BadRequest(new ResponseAPI(StatusCodes.Status400BadRequest));
+
         }
     }
     [HttpDelete("{id}")]
-    public async Task<ActionResult> DeleteRegion(int id)
+    public async Task<IActionResult> DeleteRegion(int id)
     {
         try
         {
         if(await _regionService.GetRegionByIdAsync(id) == null)
         {
-            return NotFound();
-        }
-        await _regionService.DeleteRegionAsync(id);
-            return Ok();
+                return NotFound(new ResponseAPI(StatusCodes.Status404NotFound,"ID Not Match"));
+
+            }
+            await _regionService.DeleteRegionAsync(id);
+            return Ok(new ResponseAPI(StatusCodes.Status200OK));
         }
         catch
         {
-            return BadRequest(new ResponseAPI(400));
+            return BadRequest(new ResponseAPI(StatusCodes.Status400BadRequest));
+
         }
     }
 }
