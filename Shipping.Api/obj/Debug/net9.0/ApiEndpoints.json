@@ -163,5 +163,69 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Shipping.Api.Controllers.AuthController",
+    "Method": "AddCourier",
+    "RelativePath": "Auth/addCourier",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addCourierRequest",
+        "Type": "Shipping.Api.Infrastructure.Dtos.AddCourierDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Shipping.Api.Controllers.AuthController",
+    "Method": "AddEmployee",
+    "RelativePath": "Auth/addEmployee",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addEmployeeRequest",
+        "Type": "Shipping.Api.Infrastructure.Dtos.AddEmployeeDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Shipping.Api.Controllers.AuthController",
+    "Method": "AddMerchant",
+    "RelativePath": "Auth/addMerchant",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addMerchantRequest",
+        "Type": "Shipping.Api.Infrastructure.Dtos.AddMerchantDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Shipping.Api.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginRequest",
+        "Type": "Shipping.Api.Infrastructure.Dtos.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
