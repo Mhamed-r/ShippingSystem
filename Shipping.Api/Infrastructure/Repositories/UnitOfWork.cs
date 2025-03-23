@@ -1,4 +1,5 @@
 ﻿using Shipping.Api.Core.Abstraction;
+using Shipping.Api.Core.Domain.Models;
 using Shipping.Api.Infrastructure.Data;
 using System.Collections.Concurrent;
 
@@ -8,6 +9,9 @@ public class UnitOfWork:IUnitOfWork
 {
     private readonly ShippingContext _context;
     private readonly ConcurrentDictionary<string,object> _repositories;
+
+    private Lazy<IGenericRepository<Order, int>> _orderRepository;
+
     #region Try Using Lazy Way
     //private readonly Lazy<IGenericRepository<ApplicationUser,string>> _ApplicationUser;
     //private readonly Lazy<IGenericRepository<CitySetting,int>> _CitySetting;
@@ -24,6 +28,9 @@ public class UnitOfWork:IUnitOfWork
     {
         _context = Context;
         _repositories = new ConcurrentDictionary<string,object>();
+
+        _orderRepository = new Lazy<IGenericRepository<Order, int>>(() => GetRepository<Order, int>());
+
         #region Try Using Lazy Way
         //_ApplicationUser = new Lazy<IGenericRepository<ApplicationUser,string>>(() => new GenericRepository<ApplicationUser,string>(_context));
         //_CitySetting = new Lazy<IGenericRepository<CitySetting,int>>(() => new GenericRepository<CitySetting,int>(_context));
@@ -50,6 +57,8 @@ public class UnitOfWork:IUnitOfWork
     //public IGenericRepository<ShippingType,int> ShippingType => _ShippingType.Value;
     //public IGenericRepository<WeightSetting,int> WeightSetting => _WeightSetting.Value; 
     #endregion
+    public IGenericRepository<Order, int> OrderRepository => GetRepository<Order, int>();
+
 
     public IGenericRepository<T,Tkey> GetRepository<T, Tkey>()
         where T : class

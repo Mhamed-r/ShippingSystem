@@ -4,11 +4,9 @@ public interface IGenericRepository<T, Tkey> where T : class where Tkey : IEquat
 {
     // This Is A Generic Repository Interface That Contains The Basic CRUD Operations 
     // That Can Be Performed On Any Entity Without ---- User Entity ----     
-    Task<IEnumerable<T>> GetAllAsync();
+    Task<List<T>> GetAllAsync();
     Task<T?> GetByIdAsync(Tkey id);
-
-    //Task <ApplicationUser?> GetUserByIdAsync(string id);
     Task AddAsync(T entity);
-    void UpdateAsync(T entity);
-    void DeleteAsync(T entity);
+    Task UpdateAsync(T entity);
+    Task DeleteAsync(T entity);
 }

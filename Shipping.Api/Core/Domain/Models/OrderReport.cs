@@ -11,7 +11,7 @@ namespace Shipping.Api.Core.Domain.Models;
         public string ReportDetails { get; set; } = string.Empty;
         public DateTime ReportDate { get; set; } = DateTime.Now;
         //----------- Obj From Order and ForeignKey OrderId ---------------------------------
-        [Required, ForeignKey(nameof(Order))]
+        [ ForeignKey(nameof(Order))]
         public int? OrderId { get; set; }
         public virtual Order? Order { get; set; }
     }

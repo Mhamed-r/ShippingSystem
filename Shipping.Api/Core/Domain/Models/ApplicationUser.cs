@@ -21,7 +21,7 @@ namespace Shipping.Api.Core.Domain.Models;
         public string? StoreName { get; set; }
         public decimal? PickupPrice { get; set; }
         public decimal? CanceledOrder { get; set; }
-        //----------- Enum For Deduction-type For Employee -------------------------------  
+        //----------- Enum For Deduction-type For Courier -------------------------------  
         public DeductionTypes? DeductionTypes { get; set; }
         public decimal? DeductionCompanyFromOrder { get; set; }
         //----------- Obj From Branch and ForeignKey BranchId ---------------------------------

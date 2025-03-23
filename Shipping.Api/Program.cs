@@ -1,6 +1,10 @@
 
 using Microsoft.EntityFrameworkCore;
+using Shipping.Api.Core.Abstraction;
+using Shipping.Api.Core.Domain.Models;
 using Shipping.Api.Infrastructure.Data;
+using Shipping.Api.Infrastructure.Repositories;
+using Shipping.Api.Services;
 
 namespace Shipping.Api
 {
@@ -8,6 +12,7 @@ namespace Shipping.Api
     {
         public static void Main(string[] args)
         {
+            string txt = "";
             var builder = WebApplication.CreateBuilder(args);
 
             #region Configure Services
@@ -20,6 +25,25 @@ namespace Shipping.Api
             {
                 options.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(txt,
+                builder =>
+                {
+                    builder.AllowAnyOrigin();
+                    builder.AllowAnyMethod();
+                    builder.AllowAnyHeader();
+                });
+            });
+            builder.Services.AddAutoMapper(typeof(MapperConfig));
+            builder.Services.AddScoped(typeof(IGenericRepository<,>),typeof(GenericRepository<,>));
+            builder.Services.AddScoped<CourierReportsService>();
+            builder.Services.AddScoped<RegionService>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<OrderServices>();
+            //builder.Services.AddScoped<OrderServices>();
+            //builder.Services.AddScoped<IProductService, ProductService>();
+
 
             #endregion
             var app = builder.Build();
@@ -35,6 +59,7 @@ namespace Shipping.Api
 
             app.UseAuthorization();
 
+            app.UseCors(txt);
 
             app.MapControllers();
 
