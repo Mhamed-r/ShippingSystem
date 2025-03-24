@@ -33,11 +33,13 @@ public static class ServiceContainer
         services.AuthenticationConfigurations();
         services.AddAutoMapper(typeof(MapperConfig));
         services.AddScoped(typeof(IGenericRepository<,>),typeof(GenericRepository<,>));
+        services.AddScoped<IUnitOfWork,UnitOfWork>();
         services.AddScoped<ICourierReportsService,CourierReportsService>();
         services.AddScoped<IRegionService,RegionService>();
         services.AddScoped<IUserService,UsersService>();
         services.AddScoped<ISpecialCityCostService,SpecialCityCostService>();
         services.AddScoped<ISpecialCourierRegionService,SpecialCourierRegionService>();
+        services.AddScoped<IOrderService,OrderServices>();
         return services;
     }
 

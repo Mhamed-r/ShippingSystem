@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shipping.Api.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using Shipping.Api.Infrastructure.Data;
 namespace Shipping.Api.Data.Migrations
 {
     [DbContext(typeof(ShippingContext))]
-    partial class ShippingContextModelSnapshot : ModelSnapshot
+    [Migration("20250324044739_AddIsDeleted-CustomerPhone2-UpdateOrderTableDeletePaymentTypeId")]
+    partial class AddIsDeletedCustomerPhone2UpdateOrderTableDeletePaymentTypeId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
