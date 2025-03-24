@@ -41,9 +41,7 @@
             public int? ShippingTypeId { get; set; }
             public virtual ShippingType? ShippingType { get; set; }
             //----------- Obj From PaymentType and ForeignKey PaymentTypeId ---------------------------------
-            [ForeignKey(nameof(PaymentType))]
-            public int? PaymentTypeId { get; set; }
-            public virtual PaymentType? PaymentType { get; set; }
+            public  PaymentType? PaymentType { get; set; }
             // Soft delete flag
             public bool IsDeleted { get; set; } = false;
 

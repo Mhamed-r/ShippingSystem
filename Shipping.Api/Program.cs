@@ -41,6 +41,8 @@ namespace Shipping.Api
             builder.Services.AddScoped<RegionService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<OrderServices>();
+            builder.Services.AddIdentity<ApplicationUser,ApplicationRole>()
+         .AddEntityFrameworkStores<ShippingContext>();
             //builder.Services.AddScoped<OrderServices>();
             //builder.Services.AddScoped<IProductService, ProductService>();
 

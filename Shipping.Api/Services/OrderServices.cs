@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Shipping.Api.Core.Abstraction;
 using Shipping.Api.Core.Domain.Helpers;
@@ -12,54 +13,56 @@ namespace Shipping.Api.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public OrderServices(IUnitOfWork unitOfWork, IMapper mapper)
+
+        public OrderServices(IUnitOfWork unitOfWork,IMapper mapper,UserManager<ApplicationUser> userManager)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _userManager = userManager;
         }
 
         public async Task<List<OrderWithProductsDto>> GetAllOrdersAsyncAndDeleteOrder()
         {
-            var orders = await _unitOfWork.GetRepository<Order, int>().GetAllAsync();
+            var orders = await _unitOfWork.GetRepository<Order,int>().GetAllAsync();
+            var ordersDto = _mapper.Map<List<OrderWithProductsDto>>(orders);
+            foreach(var order in ordersDto)
+            {
+                var MerchantName =await _userManager.FindByIdAsync(order.MerchantName);
+                 order.MerchantName = MerchantName?.FullName;
+            }
 
-            return _mapper.Map<List<OrderWithProductsDto>>(orders);
+            return ordersDto;
         }
-
-        public async Task<IEnumerable<OrderWithProductsDto>> GetAllOrdersAsyncExecuteDeleteOrder()
-        {
-            var orders = await _unitOfWork.GetRepository<Order, int>().GetAllAsync();
-            var filteredOrders = orders.Where(o => !o.IsDeleted).ToList();
-            return _mapper.Map<List<OrderWithProductsDto>>(filteredOrders);
-        }
-
         public async Task<OrderWithProductsDto?> GetOrderByIdAsync(int id)
         {
-            var order = await _unitOfWork.GetRepository<Order, int>()
+            var findOrder = await _unitOfWork.GetRepository<Order, int>()
                 .GetByIdAsync(id); // Use GetByIdAsync instead of GetFirstOrDefaultAsync
 
-            if (order == null || order.IsDeleted)
+            if(findOrder == null || findOrder.IsDeleted)
             {
                 return null;
             }
 
-            return new OrderWithProductsDto { Id = order.Id, IsDeleted = order.IsDeleted };
+            var orderDto = _mapper.Map<OrderWithProductsDto>(findOrder);
+            return orderDto;
         }
 
-        public async Task<bool> CreateOrderAsync(OrderWithProductsDto orderDto)
+        public async Task<bool> CreateOrderAsync(addOrderDto addorderDto)
         {
-            var order = _mapper.Map<Order>(orderDto);
+            var order = _mapper.Map<Order>(addorderDto);
             await _unitOfWork.GetRepository<Order, int>().AddAsync(order);
             await _unitOfWork.CompleteAsync();
             return true;
         }
 
-        public async Task<bool> UpdateOrderAsync(int id, OrderWithProductsDto orderDto)
+        public async Task<bool> UpdateOrderAsync(updateOrderDto UpdateOrderDto)
         {
-            var existingOrder = await _unitOfWork.GetRepository<Order, int>().GetByIdAsync(id);
+            var existingOrder = await _unitOfWork.GetRepository<Order, int>().GetByIdAsync(UpdateOrderDto.Id);
             if (existingOrder is null) return false;
 
-            _mapper.Map(orderDto, existingOrder);
+            _mapper.Map(UpdateOrderDto, existingOrder);
             await _unitOfWork.GetRepository<Order, int>().UpdateAsync(existingOrder);
             await _unitOfWork.CompleteAsync();
             return true;
