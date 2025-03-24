@@ -44,10 +44,8 @@ namespace Shipping.Api.Core.Domain.Models;
         [ForeignKey(nameof(PaymentType))]
         public int? PaymentTypeId { get; set; }
         public virtual PaymentType? PaymentType { get; set; }
-        //----------- Obj From Product and ForeignKey ProductId ---------------------------------
-        [ForeignKey(nameof(Product))]
-        public int? ProductId { get; set; }
-        public virtual Product? Product { get; set; }
+    //----------- ICollection From Product ---------------------------------
+    public virtual ICollection<Product>? Products { get; set; }
         //----------- Customer Info ---------------------------------
         public string CustomerName { get; set; } = string.Empty;
         public string CustomerPhone1 { get; set; } = string.Empty;

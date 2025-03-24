@@ -15,4 +15,59 @@ public class ShippingContext(DbContextOptions<ShippingContext> options):Identity
     public virtual DbSet<ShippingType> ShippingTypes { get; set; }
     public virtual DbSet<WeightSetting> WeightSettings { get; set; }
     public virtual DbSet<CourierReport> CourierReports { get; set; }
+    public virtual DbSet<SpecialCityCost> SpecialCityCosts { get; set; }
+    public virtual DbSet<SpecialCourierRegion> GetSpecialCourierRegions { get; set; }
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.Entity<ApplicationUser>()
+            .Property(a => a.CanceledOrder)
+            .HasPrecision(18,2);
+        builder.Entity<ApplicationUser>()
+            .Property(a => a.DeductionCompanyFromOrder)
+        .HasPrecision(18,2);
+
+        builder.Entity<ApplicationUser>()
+            .Property(a => a.PickupPrice)
+        .HasPrecision(18,2);
+
+        builder.Entity<CitySetting>()
+            .Property(c => c.StandardShippingCost)
+            .HasPrecision(18,2);
+
+        builder.Entity<CitySetting>()
+            .Property(c => c.pickupShippingCost)
+            .HasPrecision(18,2);
+
+        builder.Entity<Order>()
+            .Property(o => o.OrderCost)
+            .HasPrecision(18,2);
+
+        builder.Entity<Order>()
+            .Property(o => o.TotalWeight)
+            .HasPrecision(18,2);
+
+        builder.Entity<Product>()
+            .Property(p => p.Weight)
+            .HasPrecision(18,2);
+
+        builder.Entity<ShippingType>()
+            .Property(s => s.BaseCost)
+            .HasPrecision(18,2);
+
+        builder.Entity<WeightSetting>()
+            .Property(w => w.CostPerKg)
+            .HasPrecision(18,2);
+
+        builder.Entity<WeightSetting>()
+            .Property(w => w.MaxWeight)
+            .HasPrecision(18,2);
+
+        builder.Entity<WeightSetting>()
+            .Property(w => w.MinWeight)
+            .HasPrecision(18,2);
+        builder.Entity<SpecialCityCost>()
+            .Property(s => s.Price)
+            .HasPrecision(18,2);
+        base.OnModelCreating(builder);
     }
+}
