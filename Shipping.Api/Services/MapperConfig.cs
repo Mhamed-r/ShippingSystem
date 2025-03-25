@@ -44,10 +44,10 @@ public class MapperConfig:Profile
 
             dest.Branch = src.Branch?.Name;
             dest.Region = src.Region?.Governorate;
-            dest.ShippingType = src.ShippingType?.Name;
-            dest.PaymentType = src.PaymentType.ToString();
             dest.City = src.CitySetting?.Name;
             dest.MerchantName = src.MerchantId;
+            dest.Status = src.Status.ToString();
+            dest.CustomerInfo = $"{src.CustomerName} {src.CustomerPhone1}";
 
         }).ReverseMap();
 
