@@ -10,8 +10,10 @@ namespace Shipping.Api
             var app = builder.Build();
             if(app.Environment.IsDevelopment())
             {
-                app.MapOpenApi();
-                app.UseSwaggerUI(op => op.SwaggerEndpoint("/openapi/v1.json","v1"));
+                //app.MapOpenApi();
+                //app.UseSwaggerUI(op => op.SwaggerEndpoint("/openapi/v1.json","v1"));
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
             app.UseHttpsRedirection();
             app.UseAuthentication();

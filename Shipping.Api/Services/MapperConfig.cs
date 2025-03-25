@@ -10,7 +10,6 @@ public class MapperConfig:Profile
     {
         CreateMap<CourierReport,CourierReportDto>().AfterMap((src,dest) =>
         {
-
             dest.Area = src.Order.CitySetting.Name;
             dest.ClientName = src.Order.MerchantId;
             dest.CustomerName = src.Order.CustomerName;
@@ -38,5 +37,6 @@ public class MapperConfig:Profile
         });
         CreateMap<SpecialCityCostDTO,SpecialCityCost>().ReverseMap();
         CreateMap<SpecialCourierRegionDTO,SpecialCourierRegion>().ReverseMap();
+        CreateMap<AccountProfileDTO,ApplicationUser>().ReverseMap();
     }
 }

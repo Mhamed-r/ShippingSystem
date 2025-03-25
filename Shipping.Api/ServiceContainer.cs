@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Shipping.Api.Core.Abstraction;
 using Shipping.Api.Core.Domain.Models;
 using Shipping.Api.Infrastructure.Data;
@@ -31,6 +32,7 @@ public static class ServiceContainer
             });
         });
         services.AuthenticationConfigurations();
+        services.AddSwaggerServices();
         services.AddAutoMapper(typeof(MapperConfig));
         services.AddScoped(typeof(IGenericRepository<,>),typeof(GenericRepository<,>));
         services.AddScoped<ICourierReportsService,CourierReportsService>();
@@ -69,6 +71,38 @@ public static class ServiceContainer
             options.Password.RequiredLength = 8;
             //options.SignIn.RequireConfirmedEmail = true;
             options.User.RequireUniqueEmail = true;
+        });
+        return services;
+    }
+    // for testing
+    private static IServiceCollection AddSwaggerServices(this IServiceCollection services)
+    {
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen(options =>
+        {
+            options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme,new OpenApiSecurityScheme
+            {
+                Name = "Authorization",
+                Description = "Enter the Bearer authorization : 'Bearer Generate-JWT-Token'",
+                In = ParameterLocation.Header,
+                Type = SecuritySchemeType.ApiKey,
+                Scheme = "Bearer"
+            });
+
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = JwtBearerDefaults.AuthenticationScheme
+                        }
+                    },
+                    new string[] { }
+                }
+            });
         });
         return services;
     }

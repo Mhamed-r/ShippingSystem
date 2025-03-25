@@ -71,6 +71,12 @@ public class UsersService(
         return string.Empty;
     }
 
+    public async Task<AccountProfileDTO?> GetAccountProfileAsync(string userId,CancellationToken cancellationToken = default)
+    {
+        var accountDetails = await _userManager.Users.FirstAsync(u => u.Id == userId);
+        return _mapper.Map<AccountProfileDTO>(accountDetails);
+    }
+
     public async Task<LoginResponseDTO?> GetTokenAsync(LoginDTO loginDTO,CancellationToken cancellationToken = default)
     {
         if(await _userManager.FindByEmailAsync(loginDTO.Email) is not { } user)

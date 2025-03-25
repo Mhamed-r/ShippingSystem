@@ -167,5 +167,15 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Shipping.Api.Controllers.AccountController",
+    "Method": "GetAccountProfile",
+    "RelativePath": "me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]

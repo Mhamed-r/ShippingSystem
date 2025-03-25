@@ -521,3 +521,5 @@ D:\ITI Things\Graduation Project\Final +\Shipping.Api\obj\Debug\net9.0\Shipping.
 D:\ITI Things\Graduation Project\Final +\Shipping.Api\obj\Debug\net9.0\ref\Shipping.Api.dll
 D:\ITI Things\Graduation Project\Final +\Shipping.Api\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\ITI\Graduation Project\ShippingSystem\Shipping.Api\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\ITI Things\Graduation Project\Final +\Shipping.Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\ITI Things\Graduation Project\Final +\Shipping.Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll

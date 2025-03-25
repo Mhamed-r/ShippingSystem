@@ -22,8 +22,8 @@ public class JWTProvider:IJWTProvider
         var expiresIn = 60;
         var expiration = DateTime.Now.AddMinutes(expiresIn);
         var token = new JwtSecurityToken(
-            issuer: "Shipping",
-            audience: "Shipping Users",
+            issuer: "ShippingProject",
+            audience: "ShippingProject users",
             claims: claims,
             expires: expiration,
             signingCredentials: signingCredentials

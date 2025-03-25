@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ITI\\Graduation Project\\ShippingSystem\\Shipping.Api\\Shipping.Api.csproj": {}
+    "D:\\ITI Things\\Graduation Project\\Final +\\Shipping.Api\\Shipping.Api.csproj": {}
   },
   "projects": {
-    "D:\\ITI\\Graduation Project\\ShippingSystem\\Shipping.Api\\Shipping.Api.csproj": {
+    "D:\\ITI Things\\Graduation Project\\Final +\\Shipping.Api\\Shipping.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ITI\\Graduation Project\\ShippingSystem\\Shipping.Api\\Shipping.Api.csproj",
+        "projectUniqueName": "D:\\ITI Things\\Graduation Project\\Final +\\Shipping.Api\\Shipping.Api.csproj",
         "projectName": "Shipping.Api",
-        "projectPath": "D:\\ITI\\Graduation Project\\ShippingSystem\\Shipping.Api\\Shipping.Api.csproj",
-        "packagesPath": "C:\\Users\\MSi\\.nuget\\packages\\",
-        "outputPath": "D:\\ITI\\Graduation Project\\ShippingSystem\\Shipping.Api\\obj\\",
+        "projectPath": "D:\\ITI Things\\Graduation Project\\Final +\\Shipping.Api\\Shipping.Api.csproj",
+        "packagesPath": "C:\\Users\\mozog\\.nuget\\packages\\",
+        "outputPath": "D:\\ITI Things\\Graduation Project\\Final +\\Shipping.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\MSi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mozog\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -83,6 +83,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "Swashbuckle.AspNetCore.SwaggerUI": {
               "target": "Package",
