@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -8,6 +9,7 @@ using Shipping.Api.Core.Domain.Models;
 using Shipping.Api.Infrastructure.Data;
 using Shipping.Api.Infrastructure.Repositories;
 using Shipping.Api.Services;
+using Shipping.Api.Services.Filters;
 using System.Text;
 namespace Shipping.Api;
 public static class ServiceContainer
@@ -47,7 +49,10 @@ public static class ServiceContainer
     {
         services.AddSingleton<IJWTProvider,JWTProvider>();
         services.AddIdentity<ApplicationUser,ApplicationRole>()
-            .AddEntityFrameworkStores<ShippingContext>();
+            .AddEntityFrameworkStores<ShippingContext>()
+            .AddDefaultTokenProviders();
+        services.AddTransient<IAuthorizationHandler,PermissionAuthorizationHandler>();
+        services.AddTransient<IAuthorizationPolicyProvider,PermissionAuthorizationPolicyProvider>();
         services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

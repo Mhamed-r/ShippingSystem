@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Shipping.Api.Core.Abstraction;
 using Shipping.Api.Core.Domain.Models;
+using Shipping.Api.Infrastructure.Data;
 using Shipping.Api.Infrastructure.Dtos;
 
 namespace Shipping.Api.Services;
@@ -12,14 +13,15 @@ public class UsersService(
     IJWTProvider jWTProvider,
     IMapper mapper,
     ISpecialCityCostService specialCityCostService,
-    ISpecialCourierRegionService specialCourierRegionService):IUserService
+    ISpecialCourierRegionService specialCourierRegionService,
+    ShippingContext context):IUserService
 {
     private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly IJWTProvider _jWTProvider = jWTProvider;
     private readonly IMapper _mapper = mapper;
     private readonly ISpecialCityCostService _specialCityCostService = specialCityCostService;
     private readonly ISpecialCourierRegionService _specialCourierRegionService = specialCourierRegionService;
-
+    private readonly ShippingContext _context = context;
     public async Task<string> AddCourierAsync(AddCourierDTO addCourierDTO,CancellationToken cancellationToken = default)
     {
         if(await _userManager.Users.AnyAsync(u => u.Email == addCourierDTO.Email))
@@ -83,7 +85,21 @@ public class UsersService(
             return null;
         if(!await _userManager.CheckPasswordAsync(user,loginDTO.Password))
             return null;
-        var (token, expiresIn) = _jWTProvider.GenerateJwtToken(user);
+        var userRoles = await _userManager.GetRolesAsync(user);
+        var userPermissions = await _context.Roles
+            .Join(_context.RoleClaims,
+                role => role.Id,
+                roleClaim => roleClaim.RoleId,
+                (role,roleClaim) => new
+                {
+                    role,
+                    roleClaim
+                })
+                .Where(r => userRoles.Contains(r.role.Name))
+                .Select(r => r.roleClaim.ClaimValue)
+                .Distinct()
+                .ToListAsync(cancellationToken);
+        var (token, expiresIn) = _jWTProvider.GenerateJwtToken(user,userRoles,userPermissions);
         return new LoginResponseDTO
         (
             user.Id,
