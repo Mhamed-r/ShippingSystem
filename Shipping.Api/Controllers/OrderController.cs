@@ -17,7 +17,7 @@ public class OrderController:ControllerBase
         _orderService = orderService;
     }
 
-    [HttpGet("AllOrders")]
+    [HttpGet("GetAllOrders")]
     public async Task<IActionResult> GetAllOrders()
     {
         try
@@ -32,7 +32,7 @@ public class OrderController:ControllerBase
             return BadRequest(new ResponseAPI(StatusCodes.Status400BadRequest));
         }
     }
-    [HttpGet("{id}")]
+    [HttpGet("GetOrder/{id}")]
     public async Task<IActionResult> GetOrderById(int id)
     {
         try
@@ -42,6 +42,21 @@ public class OrderController:ControllerBase
             return NotFound(new ResponseAPI(StatusCodes.Status404NotFound,"Order not found"));
 
             return Ok(order);
+        }
+        catch
+        {
+            return BadRequest(new ResponseAPI(StatusCodes.Status400BadRequest));
+        }
+    }
+    [HttpGet("GetAllOrdersByStatus/{status}")]
+    public async Task<IActionResult> GetAllOrdersByStatus(OrderStatus status)
+    {
+        try
+        {
+            var orders = await _orderService.GetOrdersByStatus(status);
+            if(orders.Count == 0)
+                return NotFound(new ResponseAPI(StatusCodes.Status404NotFound,"No orders found"));
+            return Ok(orders);
         }
         catch
         {
@@ -67,7 +82,7 @@ public class OrderController:ControllerBase
         }
     }
 
-    [HttpPut]
+    [HttpPut("Update")]
     public async Task<IActionResult> UpdateOrder([FromBody] updateOrderDto orderDto)
     {
         if(!ModelState.IsValid)
@@ -84,7 +99,7 @@ public class OrderController:ControllerBase
             return BadRequest(new ResponseAPI(StatusCodes.Status400BadRequest));
         }
     }
-    [HttpDelete("{id}")]
+    [HttpDelete("Delete/{id}")]
     public async Task<IActionResult> DeleteOrder(int id)
     {
         try

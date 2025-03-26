@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Shipping.Api.Core.Domain.Models;
+using Shipping.Api.Infrastructure.Data;
 using Shipping.Api.Infrastructure.Dtos;
 
 namespace Shipping.Api.Services;
@@ -39,6 +40,17 @@ public class MapperConfig:Profile
         CreateMap<SpecialCityCostDTO,SpecialCityCost>().ReverseMap();
         CreateMap<SpecialCourierRegionDTO,SpecialCourierRegion>().ReverseMap();
         CreateMap<Product,ProductDto>().ReverseMap();
+
+        CreateMap<CitySetting,getCtiyDto>().AfterMap((src,dest) => {
+            
+            dest.Govaernorate =src.Region!.Governorate;
+
+        }).ReverseMap();
+        CreateMap<CitySetting,addCityDto>().ReverseMap();
+
+         
+
+
         CreateMap<Order,OrderWithProductsDto>().AfterMap((src,dest) =>
         {
 
@@ -74,6 +86,8 @@ public class MapperConfig:Profile
          .ForMember(dest => dest.ShippingType,opt => opt.Ignore())
          .ForMember(dest => dest.CitySetting,opt => opt.Ignore());
         ;
+
+
     }
 
 }

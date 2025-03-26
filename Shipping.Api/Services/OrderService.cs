@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Shipping.Api.Core.Abstraction;
+using Shipping.Api.Core.Domain.Helpers;
 using Shipping.Api.Core.Domain.Models;
 using Shipping.Api.Infrastructure.Dtos;
 
@@ -8,20 +9,22 @@ namespace Shipping.Api.Services;
 
 
     public class OrderServices :IOrderService
+{
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IOrderRepository _orderRepository;
+    private readonly IMapper _mapper;
+    private readonly UserManager<ApplicationUser> _userManager;
+
+
+    public OrderServices(IUnitOfWork unitOfWork,IMapper mapper,UserManager<ApplicationUser> userManager,IOrderRepository orderRepository)
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-        private readonly UserManager<ApplicationUser> _userManager;
+        _unitOfWork = unitOfWork;
+        _mapper = mapper;
+        _userManager = userManager;
+        _orderRepository = orderRepository;
+    }
 
-
-        public OrderServices(IUnitOfWork unitOfWork,IMapper mapper,UserManager<ApplicationUser> userManager)
-        {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
-            _userManager = userManager;
-        }
-
-        public async Task<List<OrderWithProductsDto>> GetAllOrdersAsyncAndDeleteOrder()
+    public async Task<List<OrderWithProductsDto>> GetAllOrdersAsyncAndDeleteOrder()
         {
             var orders = await _unitOfWork.GetRepository<Order,int>().GetAllAsync();
             var ordersDto = _mapper.Map<List<OrderWithProductsDto>>(orders);
@@ -97,5 +100,19 @@ namespace Shipping.Api.Services;
 
             return true;
         }
+
+    public async Task<List<OrderWithProductsDto>> GetOrdersByStatus(OrderStatus status)
+    {
+        var orders = await _orderRepository.GetOrdersByStatus(status);
+
+        var OrdersDto = _mapper.Map<List<OrderWithProductsDto>>(orders);
+        foreach(var order in OrdersDto)
+        {
+            var MerchantName = await _userManager.FindByIdAsync(order.MerchantName);
+            order.MerchantName = MerchantName?.FullName;
+        }
+        return OrdersDto;
+
     }
+}
 
