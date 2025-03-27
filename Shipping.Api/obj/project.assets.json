@@ -4949,23 +4949,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mozog\\.nuget\\packages\\": {},
+    "C:\\Users\\MSi\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ITI Things\\Graduation Project\\Final +\\Shipping.Api\\Shipping.Api.csproj",
+      "projectUniqueName": "D:\\ITI\\Graduation Project\\ShippingSystem\\Shipping.Api\\Shipping.Api.csproj",
       "projectName": "Shipping.Api",
-      "projectPath": "D:\\ITI Things\\Graduation Project\\Final +\\Shipping.Api\\Shipping.Api.csproj",
-      "packagesPath": "C:\\Users\\mozog\\.nuget\\packages\\",
-      "outputPath": "D:\\ITI Things\\Graduation Project\\Final +\\Shipping.Api\\obj\\",
+      "projectPath": "D:\\ITI\\Graduation Project\\ShippingSystem\\Shipping.Api\\Shipping.Api.csproj",
+      "packagesPath": "C:\\Users\\MSi\\.nuget\\packages\\",
+      "outputPath": "D:\\ITI\\Graduation Project\\ShippingSystem\\Shipping.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\mozog\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\MSi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4992,7 +4992,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net9.0": {
@@ -5060,7 +5060,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
