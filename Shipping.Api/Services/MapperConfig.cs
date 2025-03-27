@@ -46,7 +46,7 @@ public class MapperConfig:Profile
 
         }).ReverseMap();
         CreateMap<CitySetting,addCityDto>().ReverseMap();
-
+        CreateMap<Product, ADDProductDto>().ReverseMap();
 
 
 
@@ -86,7 +86,10 @@ public class MapperConfig:Profile
          .ForMember(dest => dest.CitySetting,opt => opt.Ignore());
         ;
 
-    }
+      
+
+    } 
+   
 
 }
 

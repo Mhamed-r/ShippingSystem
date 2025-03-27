@@ -48,6 +48,7 @@ public static class ServiceContainer
         services.AddScoped<IOrderRepository,OrderRepository>();
         services.AddScoped<IOrderService,OrderServices>();
         services.AddScoped<IRoleService,RoleService>();
+        services.AddScoped<IProductService, ProductService>();
         return services;
     }
 
