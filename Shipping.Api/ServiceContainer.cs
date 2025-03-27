@@ -42,6 +42,7 @@ public static class ServiceContainer
         services.AddScoped<IUserService,UsersService>();
         services.AddScoped<ISpecialCityCostService,SpecialCityCostService>();
         services.AddScoped<ISpecialCourierRegionService,SpecialCourierRegionService>();
+        services.AddScoped<IRoleService,RoleService>();
         return services;
     }
 
