@@ -1,5 +1,63 @@
 [
   {
+    "ContainingType": "Shipping.Api.Controllers.CityController",
+    "Method": "GetCityByIdAsync",
+    "RelativePath": "api/City/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Shipping.Api.Controllers.CityController",
+    "Method": "AddCityAsync",
+    "RelativePath": "api/City/AddCity",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addCityDto",
+        "Type": "Shipping.Api.Infrastructure.Data.addCityDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Shipping.Api.Controllers.CityController",
+    "Method": "GetAllCityAsync",
+    "RelativePath": "api/City/GetAllCities",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Shipping.Api.Controllers.CityController",
+    "Method": "GetCityByRegionAsync",
+    "RelativePath": "api/City/GetCityByRegion/{regionId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "regionId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Shipping.Api.Controllers.CourierReportController",
     "Method": "GetAllReports",
     "RelativePath": "api/CourierReport",
@@ -26,9 +84,41 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Shipping.Api.Controllers.GroupsController",
-    "Method": "GetAllGroups",
-    "RelativePath": "api/Groups",
+    "ContainingType": "Shipping.Api.Controllers.OrderController",
+    "Method": "CreateOrder",
+    "RelativePath": "api/Order",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderDto",
+        "Type": "Shipping.Api.Infrastructure.Dtos.addOrderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Shipping.Api.Controllers.OrderController",
+    "Method": "DeleteOrder",
+    "RelativePath": "api/Order/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Shipping.Api.Controllers.OrderController",
+    "Method": "GetAllOrders",
+    "RelativePath": "api/Order/GetAllOrders",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -36,69 +126,64 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Shipping.Api.Controllers.GroupsController",
-    "Method": "CreateGroup",
-    "RelativePath": "api/Groups",
-    "HttpMethod": "POST",
+    "ContainingType": "Shipping.Api.Controllers.OrderController",
+    "Method": "GetAllOrdersByStatus",
+    "RelativePath": "api/Order/GetAllOrdersByStatus/{status}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "createRoleRequestDTO",
-        "Type": "Shipping.Api.Infrastructure.Dtos.CreateRoleRequestDTO",
+        "Name": "status",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Shipping.Api.Controllers.GroupsController",
-    "Method": "GetGroup",
-    "RelativePath": "api/Groups/{id}",
+    "ContainingType": "Shipping.Api.Controllers.OrderController",
+    "Method": "GetOrderById",
+    "RelativePath": "api/Order/GetOrder/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.String",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Shipping.Api.Controllers.GroupsController",
-    "Method": "UpdateGroup",
-    "RelativePath": "api/Groups/{id}",
+    "ContainingType": "Shipping.Api.Controllers.OrderController",
+    "Method": "RestoreOrder",
+    "RelativePath": "api/Order/restore/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "createRoleRequestDTO",
-        "Type": "Shipping.Api.Infrastructure.Dtos.CreateRoleRequestDTO",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Shipping.Api.Controllers.GroupsController",
-    "Method": "DeleteGroup",
-    "RelativePath": "api/Groups/{id}",
-    "HttpMethod": "DELETE",
+    "ContainingType": "Shipping.Api.Controllers.OrderController",
+    "Method": "UpdateOrder",
+    "RelativePath": "api/Order/Update",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.String",
+        "Name": "orderDto",
+        "Type": "Shipping.Api.Infrastructure.Dtos.updateOrderDto",
         "IsRequired": true
       }
     ],
@@ -245,16 +330,6 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Shipping.Api.Controllers.AccountController",
-    "Method": "GetAccountProfile",
-    "RelativePath": "me",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   }
 ]

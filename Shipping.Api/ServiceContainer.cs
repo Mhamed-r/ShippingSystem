@@ -37,11 +37,16 @@ public static class ServiceContainer
         services.AddSwaggerServices();
         services.AddAutoMapper(typeof(MapperConfig));
         services.AddScoped(typeof(IGenericRepository<,>),typeof(GenericRepository<,>));
+        services.AddScoped<IUnitOfWork,UnitOfWork>();
         services.AddScoped<ICourierReportsService,CourierReportsService>();
         services.AddScoped<IRegionService,RegionService>();
         services.AddScoped<IUserService,UsersService>();
         services.AddScoped<ISpecialCityCostService,SpecialCityCostService>();
         services.AddScoped<ISpecialCourierRegionService,SpecialCourierRegionService>();
+        services.AddScoped<ICityService,CityService>();
+        services.AddScoped<ICityRepository,CityRepository>();
+        services.AddScoped<IOrderRepository,OrderRepository>();
+        services.AddScoped<IOrderService,OrderServices>();
         services.AddScoped<IRoleService,RoleService>();
         return services;
     }

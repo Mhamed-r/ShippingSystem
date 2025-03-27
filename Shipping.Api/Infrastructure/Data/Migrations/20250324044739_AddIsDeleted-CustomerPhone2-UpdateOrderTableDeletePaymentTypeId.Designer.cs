@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shipping.Api.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using Shipping.Api.Infrastructure.Data;
 namespace Shipping.Api.Data.Migrations
 {
     [DbContext(typeof(ShippingContext))]
-    partial class ShippingContextModelSnapshot : ModelSnapshot
+    [Migration("20250324044739_AddIsDeleted-CustomerPhone2-UpdateOrderTableDeletePaymentTypeId")]
+    partial class AddIsDeletedCustomerPhone2UpdateOrderTableDeletePaymentTypeId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,372 +51,6 @@ namespace Shipping.Api.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ClaimType = "permissions",
-                            ClaimValue = "Permissions:ViewPermissions",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ClaimType = "permissions",
-                            ClaimValue = "Permissions:AddPermissions",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ClaimType = "permissions",
-                            ClaimValue = "Permissions:UpdatePermissions",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ClaimType = "permissions",
-                            ClaimValue = "Permissions:DeletePermissions",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ClaimType = "permissions",
-                            ClaimValue = "Settings:ViewSettings",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ClaimType = "permissions",
-                            ClaimValue = "Settings:AddSettings",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ClaimType = "permissions",
-                            ClaimValue = "Settings:UpdateSettings",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            ClaimType = "permissions",
-                            ClaimValue = "Settings:DeleteSettings",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            ClaimType = "permissions",
-                            ClaimValue = "Bank:ViewBank",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            ClaimType = "permissions",
-                            ClaimValue = "Bank:AddBank",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            ClaimType = "permissions",
-                            ClaimValue = "Bank:UpdateBank",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            ClaimType = "permissions",
-                            ClaimValue = "Bank:DeleteBank",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            ClaimType = "permissions",
-                            ClaimValue = "MoneySafe:ViewMoneySafe",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            ClaimType = "permissions",
-                            ClaimValue = "MoneySafe:AddMoneySafe",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            ClaimType = "permissions",
-                            ClaimValue = "MoneySafe:UpdateMoneySafe",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            ClaimType = "permissions",
-                            ClaimValue = "MoneySafe:DeleteMoneySafe",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            ClaimType = "permissions",
-                            ClaimValue = "Branches:ViewBranches",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            ClaimType = "permissions",
-                            ClaimValue = "Branches:AddBranches",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            ClaimType = "permissions",
-                            ClaimValue = "Branches:UpdateBranches",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            ClaimType = "permissions",
-                            ClaimValue = "Branches:DeleteBranches",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 21,
-                            ClaimType = "permissions",
-                            ClaimValue = "Employees:ViewEmployees",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 22,
-                            ClaimType = "permissions",
-                            ClaimValue = "Employees:AddEmployees",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 23,
-                            ClaimType = "permissions",
-                            ClaimValue = "Employees:UpdateEmployees",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 24,
-                            ClaimType = "permissions",
-                            ClaimValue = "Employees:DeleteEmployees",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 25,
-                            ClaimType = "permissions",
-                            ClaimValue = "Merchants:ViewMerchants",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 26,
-                            ClaimType = "permissions",
-                            ClaimValue = "Merchants:AddMerchants",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 27,
-                            ClaimType = "permissions",
-                            ClaimValue = "Merchants:UpdateMerchants",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 28,
-                            ClaimType = "permissions",
-                            ClaimValue = "Merchants:DeleteMerchants",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 29,
-                            ClaimType = "permissions",
-                            ClaimValue = "Couriers:ViewCouriers",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 30,
-                            ClaimType = "permissions",
-                            ClaimValue = "Couriers:AddCouriers",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 31,
-                            ClaimType = "permissions",
-                            ClaimValue = "Couriers:UpdateCouriers",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 32,
-                            ClaimType = "permissions",
-                            ClaimValue = "Couriers:DeleteCouriers",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 33,
-                            ClaimType = "permissions",
-                            ClaimValue = "Regions:ViewRegions",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 34,
-                            ClaimType = "permissions",
-                            ClaimValue = "Regions:AddRegions",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 35,
-                            ClaimType = "permissions",
-                            ClaimValue = "Regions:UpdateRegions",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 36,
-                            ClaimType = "permissions",
-                            ClaimValue = "Regions:DeleteRegions",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 37,
-                            ClaimType = "permissions",
-                            ClaimValue = "Cities:ViewCities",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 38,
-                            ClaimType = "permissions",
-                            ClaimValue = "Cities:AddCities",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 39,
-                            ClaimType = "permissions",
-                            ClaimValue = "Cities:UpdateCities",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 40,
-                            ClaimType = "permissions",
-                            ClaimValue = "Cities:DeleteCities",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 41,
-                            ClaimType = "permissions",
-                            ClaimValue = "Orders:ViewOrders",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 42,
-                            ClaimType = "permissions",
-                            ClaimValue = "Orders:AddOrders",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 43,
-                            ClaimType = "permissions",
-                            ClaimValue = "Orders:UpdateOrders",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 44,
-                            ClaimType = "permissions",
-                            ClaimValue = "Orders:DeleteOrders",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 45,
-                            ClaimType = "permissions",
-                            ClaimValue = "OrderReports:ViewOrderReports",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 46,
-                            ClaimType = "permissions",
-                            ClaimValue = "OrderReports:AddOrderReports",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 47,
-                            ClaimType = "permissions",
-                            ClaimValue = "OrderReports:UpdateOrderReports",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 48,
-                            ClaimType = "permissions",
-                            ClaimValue = "OrderReports:DeleteOrderReports",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 49,
-                            ClaimType = "permissions",
-                            ClaimValue = "Accounts:ViewAccounts",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 50,
-                            ClaimType = "permissions",
-                            ClaimValue = "Accounts:AddAccounts",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 51,
-                            ClaimType = "permissions",
-                            ClaimValue = "Accounts:UpdateAccounts",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        },
-                        new
-                        {
-                            Id = 52,
-                            ClaimType = "permissions",
-                            ClaimValue = "Accounts:DeleteAccounts",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -476,13 +113,6 @@ namespace Shipping.Api.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "0195d439-9ca1-7873-9c14-a4bc1c201593",
-                            RoleId = "0195d439-9ca1-7873-9c14-a4bc1c201593"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -535,17 +165,6 @@ namespace Shipping.Api.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "0195d439-9ca1-7873-9c14-a4bc1c201593",
-                            ConcurrencyStamp = "0195d43b-a808-757b-9c3e-bf90c6091133",
-                            CreatedAt = new DateTime(2025, 3, 26, 23, 15, 7, 93, DateTimeKind.Local).AddTicks(1125),
-                            IsDeleted = false,
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        });
                 });
 
             modelBuilder.Entity("Shipping.Api.Core.Domain.Models.ApplicationUser", b =>
@@ -658,27 +277,6 @@ namespace Shipping.Api.Data.Migrations
                     b.HasIndex("RegionId");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "0195d439-9ca1-7873-9c14-a4bc1c201593",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "0195d43b-a808-757b-9c3e-bf90c6091133",
-                            CreatedAt = new DateTime(2025, 3, 26, 23, 15, 7, 75, DateTimeKind.Local).AddTicks(9242),
-                            Email = "admin@shipping.com",
-                            EmailConfirmed = false,
-                            FullName = "Shipping Admin",
-                            IsDeleted = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@SHIPPING.COM",
-                            NormalizedUserName = "ADMIN@SHIPPING.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAENjhApHkXoZCzVm4OAcNZ40XVOPdDiUlQDjgVhhbWsOrkW3EreaeJiAyBoqYUO8GJQ==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "0195d43be3f271878cc37be7dfc34361",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@shipping.com"
-                        });
                 });
 
             modelBuilder.Entity("Shipping.Api.Core.Domain.Models.Branch", b =>

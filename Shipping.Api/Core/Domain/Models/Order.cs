@@ -41,14 +41,14 @@ namespace Shipping.Api.Core.Domain.Models;
         public int? ShippingTypeId { get; set; }
         public virtual ShippingType? ShippingType { get; set; }
         //----------- Obj From PaymentType and ForeignKey PaymentTypeId ---------------------------------
-        [ForeignKey(nameof(PaymentType))]
-        public int? PaymentTypeId { get; set; }
-        public virtual PaymentType? PaymentType { get; set; }
+        public  PaymentType? PaymentType { get; set; }
     //----------- ICollection From Product ---------------------------------
+      public bool IsDeleted { get; set; } = false;
     public virtual ICollection<Product>? Products { get; set; }
         //----------- Customer Info ---------------------------------
         public string CustomerName { get; set; } = string.Empty;
         public string CustomerPhone1 { get; set; } = string.Empty;
+        public string CustomerPhone2 { get; set; } = string.Empty;
         public string CustomerAddress { get; set; } = string.Empty;
         public string CustomerEmail { get; set; } = string.Empty;
     }

@@ -7,7 +7,7 @@ namespace Shipping.Api.Infrastructure.Repositories;
     {
 
 
-        private readonly ShippingContext _context;
+        public ShippingContext _context;
 
         public GenericRepository(ShippingContext context)
         {
